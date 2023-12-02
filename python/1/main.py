@@ -1,6 +1,5 @@
 import argparse
 
-
 tokens_mapping = {
     'one': 1,
     'two': 2,
@@ -106,7 +105,7 @@ if __name__ == '__main__':
 
     with open(args.data, 'r') as data_file:
         lines = data_file.readlines()
-        lines = [line[:-1] for line in lines]
+        lines = [line.replace('\n', '') for line in lines]
 
     result = func(lines)
     print(f'Result: {result}')
