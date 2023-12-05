@@ -5,14 +5,13 @@ NON_SYMBOL = '.'
 
 def is_part_number(row: int, start_col: int, end_col: int, puzzle: list[list[str]]) -> bool:
 
-    if start_col != 0:
-        if puzzle[row][start_col - 1] != NON_SYMBOL:
+    if start_col != 0 and puzzle[row][start_col - 1] != NON_SYMBOL:
             return True
-    if end_col != len(puzzle[row]) - 1:
-        if puzzle[row][end_col + 1] != NON_SYMBOL:
+    if end_col != len(puzzle[row]) - 1 and puzzle[row][end_col + 1] != NON_SYMBOL:
             return True
         
     other_start = start_col
+    
     if other_start != 0:
         other_start = other_start - 1
 
@@ -28,6 +27,7 @@ def is_part_number(row: int, start_col: int, end_col: int, puzzle: list[list[str
 
     if row != len(puzzle) - 1:
         for i in range(other_start, other_end + 1):
+
             if puzzle[row + 1][i] != NON_SYMBOL:
                 return True
     return False
@@ -65,6 +65,11 @@ def find_part_numbers(puzzle: list[list[str]]) -> list[int]:
                         part_numbers.append(num)
                     start_number = -1
                     end_number = -1
+
+        if start_number != -1:
+            if is_part_number(row, start_number, end_number, puzzle):
+                num = convert_to_number(row, start_number, end_number, puzzle)
+                part_numbers.append(num)
     return part_numbers
                     
 def sum_part_numbers(puzzle: list[list[str]]) -> int:
