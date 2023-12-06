@@ -79,6 +79,14 @@ def sum_part_numbers(puzzle: list[list[str]]) -> int:
         result = result + num
     return result
 
+
+
+def find_part_numbers_adjacent_to_gear(puzzle: list[list[str]]):
+
+    
+
+
+
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(prog='ac23 3', description='ac23 3')
